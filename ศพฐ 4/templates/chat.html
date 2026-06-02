@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบบริการประชาชนอัจฉริยะ - ศพฐ.4</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/chat.css">
+</head>
+<body>
+    <div class="bg-mesh"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px 0;">
+        <div class="chat-container glass-panel animate-fade">
+            <!-- User IP Address Display Banner removed as per request -->
+
+            <!-- Chat Header -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <div class="logo-container">
+                        <!-- Custom Police / Forensic Badge SVG Icon -->
+                        <svg class="logo-svg" viewBox="0 0 24 24">
+                            <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 14.15c-3.16-1.07-5.5-4.48-5.92-8.15h11.84c-.42 3.67-2.76 7.08-5.92 8.15z"/>
+                            <circle cx="12" cy="9" r="1.5" />
+                        </svg>
+                    </div>
+                    <div class="header-info">
+                        <h1>ศพฐ.4 แชทบอทอัจฉริยะ</h1>
+                        <p>ศูนย์พิสูจน์หลักฐาน 4 สำนักงานตำรวจแห่งชาติ</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="status-dot-container">
+                        <span class="status-dot" id="system-status-dot"></span>
+                        <span id="system-status-text">ระบบตอบรับอัตโนมัติ</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Chat Messages Window -->
+            <div class="chat-messages" id="chat-messages-container">
+                <!-- Welcome Message (Generated via JS to ensure session logic) -->
+            </div>
+
+            <!-- Typing Indicator (Hidden by default) -->
+            <div id="typing-indicator" class="msg-wrapper bot" style="display: none; align-self: flex-start; margin-left: 24px; margin-bottom: 15px;">
+                <div class="msg-sender">
+                    <span class="badge badge-bot">บอท ศพฐ.4</span>
+                </div>
+                <div class="msg-bubble typing-bubble">
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                </div>
+            </div>
+
+            <!-- Quick Reply Menu Options -->
+            <div class="quick-replies-container" id="quick-replies-menu">
+                <button class="quick-reply-btn" data-text="📞 ติดต่อ ศพฐ.4">📞 ติดต่อหน่วยงาน</button>
+                <button class="quick-reply-btn" data-text="🔍 ตรวจลายนิ้วมือ">🔍 ตรวจลายนิ้วมือ / ประวัติ</button>
+                <button class="quick-reply-btn" data-text="🧬 ตรวจ DNA">🧬 ตรวจ DNA / สายเลือด</button>
+                <button class="quick-reply-btn" data-text="🔫 ส่งตรวจปืน">🔫 ส่งตรวจปืน / เขม่าปืน</button>
+                <button class="quick-reply-btn" data-text="🔥 ตรวจที่เกิดเหตุ">🔥 ตรวจสถานที่เกิดเหตุ</button>
+                <button class="quick-reply-btn" data-text="📝 ตรวจเอกสาร">📝 ตรวจปลอมแปลงเอกสาร</button>
+                <button class="quick-reply-btn" id="btn-request-admin" data-text="🙋 ต้องการคุยกับเจ้าหน้าที่">🙋 คุยกับเจ้าหน้าที่</button>
+            </div>
+
+            <!-- Input area -->
+            <div class="chat-input-area">
+                <form class="chat-form" id="chat-submit-form" onsubmit="event.preventDefault(); sendUserMessage();">
+                    <div class="input-wrapper">
+                        <input type="text" id="chat-input-field" class="chat-input" placeholder="พิมพ์ข้อความสอบถามข้อมูลที่นี่..." autocomplete="off" required>
+                    </div>
+                    <button type="submit" class="send-btn" id="send-message-btn">
+                        <svg class="send-icon" viewBox="0 0 24 24">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Socket.IO client library stored locally -->
+    <script src="/static/js/socket.io.min.js"></script>
+    <script src="/static/js/chat.js"></script>
+</body>
+</html>
